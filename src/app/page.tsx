@@ -1,4 +1,13 @@
-import Image from 'next/image'
+"use client"
+
+import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import Players from "@/components/Players";
+import Teams from "@/components/Teams";
+import { selectTabState, setTabState } from "@/slices/tabSlice";
+import { selectTeamPlayerState } from "@/slices/teamPlayerSlice";
+
+// https://github.com/czetsuya/nextjs-redux-toolkit
 
 const selectedTab =
   "bg-primary-orange text-slate-50 font-bold px-5 py-2 rounded shadow cursor-not-allowed";
@@ -6,10 +15,17 @@ const selectableTab =
   "border border-primary-orange text-[#111] font-bold px-5 py-2 rounded shadow hover:bg-primary-orange hover:text-slate-50";
 
 export default function Home() {
+  const tabState = useSelector(selectTabState);
+  const teamPlayerState = useSelector(selectTeamPlayerState);
+  const dispatch = useDispatch();
+
   return (
     <div>
+      {/* <Link href="/another-page">Another Page</Link>
+      <div>{authState ? "Logged in" : "Not Logged In"}</div> */}
       <div className="min-w-full min-h-full flex px-[5rem]">
-        <div className="w-[50vw] box-border px-10 mt-[5rem]"></div>
+        {tabState == "player" ? <Players /> : <Teams />}
+
         <div className="flex w-[50vw]">
           <div className="flex flex-col w-full items-center mt-[3.5rem] h-max">
             <div className="image-container w-[10rem] h-[10rem] overflow-hidden bg-primary-orange flex items-center rounded-lg shadow-lg">
@@ -22,16 +38,24 @@ export default function Home() {
             </div>
             <h5 className="mt-5 text-lg font-bold">Basketball App</h5>
             <div className="mt-5 flex gap-2">
-              <button className={true ? selectedTab : selectableTab}>
+              <button
+                className={tabState == "player" ? selectedTab : selectableTab}
+                onClick={() => {dispatch(setTabState("player"))}}
+              >
                 Players
               </button>
-              <button className={false ? selectedTab : selectableTab}>
+              <button
+                className={tabState == "team" ? selectedTab : selectableTab}
+                onClick={() => {dispatch(setTabState("team"))}}
+              >
                 Teams
               </button>
             </div>
           </div>
         </div>
       </div>
+
+     
     </div>
   );
 }
