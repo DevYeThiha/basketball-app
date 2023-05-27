@@ -1,11 +1,13 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import Players from "@/components/Players";
 import Teams from "@/components/Teams";
 import { selectTabState, setTabState } from "@/slices/tabSlice";
-import { selectTeamPlayerState } from "@/slices/teamPlayerSlice";
+import { FiLogOut } from "react-icons/fi";
+import { useContext } from "react";
+import { AuthContext } from "@/providers/AuthProvider";
 
 // https://github.com/czetsuya/nextjs-redux-toolkit
 
@@ -16,7 +18,7 @@ const selectableTab =
 
 export default function Home() {
   const tabState = useSelector(selectTabState);
-  const teamPlayerState = useSelector(selectTeamPlayerState);
+  const { handleLogout } = useContext(AuthContext);
   const dispatch = useDispatch();
 
   return (
@@ -40,22 +42,32 @@ export default function Home() {
             <div className="mt-5 flex gap-2">
               <button
                 className={tabState == "player" ? selectedTab : selectableTab}
-                onClick={() => {dispatch(setTabState("player"))}}
+                onClick={() => {
+                  dispatch(setTabState("player"));
+                }}
               >
                 Players
               </button>
               <button
                 className={tabState == "team" ? selectedTab : selectableTab}
-                onClick={() => {dispatch(setTabState("team"))}}
+                onClick={() => {
+                  dispatch(setTabState("team"));
+                }}
               >
                 Teams
               </button>
             </div>
+            <button
+              className="mt-[3rem] flex gap-3 items-center font-bold hover:text-primary-orange"
+              type="button"
+              onClick={handleLogout}
+            >
+              <FiLogOut />
+              Logout
+            </button>
           </div>
         </div>
       </div>
-
-     
     </div>
   );
 }

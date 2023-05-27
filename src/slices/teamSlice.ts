@@ -53,6 +53,10 @@ export const teamSlice = createSlice({
       state.data = [...newState];
       return state;
     },
+    resetTeam(state){
+      state.data = [];
+      return state;
+    }
   },
 
   // Special reducer for hydrating the state. Special case for next-redux-wrapper
@@ -66,7 +70,7 @@ export const teamSlice = createSlice({
   },
 });
 
-export const { createTeam, editTeam, deleteTeam } = teamSlice.actions;
+export const { createTeam, editTeam, deleteTeam, resetTeam } = teamSlice.actions;
 
 export const selectTeamState = (state: AppState) => state.teams.data;
 

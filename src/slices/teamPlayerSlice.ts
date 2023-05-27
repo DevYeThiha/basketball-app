@@ -33,6 +33,10 @@ export const teamPlayerSlice = createSlice({
         return state;
       }
     },
+    resetTeamPlayers(state){
+      state.data = [];
+      return state;
+    }
    
   },
 
@@ -47,7 +51,7 @@ export const teamPlayerSlice = createSlice({
   },
 });
 
-export const { addTeamPlayer } = teamPlayerSlice.actions;
+export const { addTeamPlayer, resetTeamPlayers } = teamPlayerSlice.actions;
 
 export const selectTeamPlayerState = (state: AppState) => state["team-player"].data;
 

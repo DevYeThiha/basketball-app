@@ -5,6 +5,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { useStore } from "react-redux";
 import { ReactNode } from "react";
 import { AppStore } from "@/store";
+import AuthProvider from "@/providers/AuthProvider";
 
 interface RootWrappersProps {
   children: ReactNode | ReactNode[] | undefined;
@@ -12,11 +13,13 @@ interface RootWrappersProps {
 
 const RootWrappers: React.FC<RootWrappersProps> = ({ children }) => {
   const store: any = useStore();
-  
+
   return (
-    <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
-      {children}
-    </PersistGate>
+    <AuthProvider>
+      <PersistGate persistor={store.__persistor} loading={<div>Loading</div>}>
+        {children}
+      </PersistGate>
+    </AuthProvider>
   );
 };
 
