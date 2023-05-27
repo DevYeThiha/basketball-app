@@ -68,7 +68,7 @@ const TeamModal: React.FC<TeamModalProps> = ({
   return (
     <div
       className={clsx(
-        "fixed top-0 left-0 w-[100vw] h-[100vh] flex justify-center transition-all duration-[1s] ease ",
+        "fixed top-0 left-0 w-[100vw] h-[100vh] flex justify-center transition-all duration-[1s] ease z-50",
         showModal ? "bg-black/20 pointer-events-auto" : "pointer-events-none"
       )}
     >

@@ -33,8 +33,8 @@ const Players: React.FC<PlayersProps> = () => {
   return (
     <>
       <AddTeamModal playerId={selectedPlayer} setPlayerId={setSelectedPlayer} />
-      <div className="w-[50vw] box-border px-10 mt-[5rem]">
-        <h1 className="font-bold text-lg pb-5">Players</h1>
+      <div className="w-full lg:w-[50vw] box-border px-3 md:px-10 lg:mt-[5rem]">
+        <h1 className="hidden lg:block font-bold text-lg pb-5">Players</h1>
         <div className="flex flex-col gap-5 w-full h-[83vh] overflow-y-auto box-border">
           {players.data.map((player, index) => (
             <div key={player.id}>

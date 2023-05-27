@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 import { RxDividerVertical } from "react-icons/rx";
@@ -39,11 +39,11 @@ const Teams: React.FC<PlayersProps> = () => {
         setEditValue={setEditValue}
         setShowModal={setShowModal}
       />
-      <div className="w-[50vw] box-border px-10 mt-[5rem]">
+      <div className="relative w-full lg:w-[50vw] box-border px-3 md:px-10 lg:mt-[5rem]">
         <div className="w-full flex justify-between">
-          <h1 className="font-bold text-lg pb-5 max-w">Teams</h1>
+          <h1 className="hidden lg:block font-bold text-lg pb-5 max-w">Teams</h1>
           <button
-            className="bg-primary-orange text-slate-50 font-bold text-sm px-5 py-[0.35rem] h-max rounded shadow"
+            className="hidden lg:block bg-primary-orange text-slate-50 font-bold text-sm px-5 py-[0.35rem] h-max rounded shadow"
             type="button"
             onClick={() => setShowModal(true)}
           >
@@ -70,11 +70,6 @@ const Teams: React.FC<PlayersProps> = () => {
                   <div className="flex flex-col justify-between min-h-[3em]">
                     <h3 className="font-semibold box-border ">{team.name}</h3>
                     <div className="flex gap-2">
-                      <h5 className="flex items-center text-xs">
-                        <span className="min-w-[1.1rem] p-1 h-[1.1rem] flex justify-center items-center bg-slate-800 text-zinc-300 ml-1 rounded">
-                          {getTotalPlayerByTeamId(team.id)} players
-                        </span>
-                      </h5>
                       <h5 className="flex items-center text-xs">
                         <IoLocationSharp />
                         {team.country}, {team.region}
@@ -115,6 +110,14 @@ const Teams: React.FC<PlayersProps> = () => {
             </div>
           ))}
         </div>
+
+        <button
+            className="absolute flex justify-center items-center lg:hidden bg-primary-orange text-slate-50 font-bold p-[1rem] rounded-full w-[3rem] h-[3rem] bottom-[2rem] right-[2rem] shadow"
+            type="button"
+            onClick={() => setShowModal(true)}
+          >
+            <FaPlus className="text-2xl"/>
+          </button>
       </div>
     </>
   );
