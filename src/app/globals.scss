@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.image-container {
+  img {
+    position: unset !important;
+    height: auto !important;
+  }
+}
+
+.image-container-h {
+  img {
+    position: unset !important;
+    width: auto !important;
+  }
+}
