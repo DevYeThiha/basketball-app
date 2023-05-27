@@ -9,8 +9,7 @@ export default function Home() {
   return (
     <div>
       <div className="min-w-full min-h-full flex px-[5rem]">
-      <div className="w-[50vw] box-border px-10 mt-[5rem]">
-        </div>
+        <div className="w-[50vw] box-border px-10 mt-[5rem]"></div>
         <div className="flex w-[50vw]">
           <div className="flex flex-col w-full items-center mt-[3.5rem] h-max">
             <div className="image-container w-[10rem] h-[10rem] overflow-hidden bg-primary-orange flex items-center rounded-lg shadow-lg">
@@ -23,15 +22,10 @@ export default function Home() {
             </div>
             <h5 className="mt-5 text-lg font-bold">Basketball App</h5>
             <div className="mt-5 flex gap-2">
-              <button
-                className={true ? selectedTab : selectableTab}
-              >
+              <button className={true ? selectedTab : selectableTab}>
                 Players
               </button>
-              <button
-                className={false ? selectedTab : selectableTab}
-                
-              >
+              <button className={false ? selectedTab : selectableTab}>
                 Teams
               </button>
             </div>
